@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SBI – My Account</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap');
+
+  :root {
+    --sbi-navy: #1a3a5c;
+    --sbi-blue: #00509d;
+    --sbi-light-blue: #e8f1fa;
+    --sbi-gold: #f5a623;
+    --sbi-green: #1b7a3a;
+    --sbi-green-bg: #eef7f2;
+    --text-dark: #1e2a3a;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --white: #ffffff;
+    --border: #d4dfe8;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    background: #f0f4f8;
+    color: var(--text-dark);
+    min-height: 100vh;
+    font-size: 17px;
+  }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    background: var(--sbi-navy);
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    padding: 7px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .top-bar a:hover { color: #fff; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-circle {
+    width: 52px;
+    height: 52px;
+    background: var(--sbi-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    border: 3px solid var(--sbi-gold);
+  }
+  .logo-text { font-size: 22px; font-weight: 700; color: var(--sbi-navy); }
+  .logo-text span { color: var(--sbi-gold); }
+  .logo-sub { font-size: 11px; color: var(--text-light); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 1px; }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--sbi-light-blue);
+    border: 2px solid var(--sbi-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--sbi-blue);
+    font-size: 16px;
+  }
+  .user-name { font-weight: 600; font-size: 15px; color: var(--sbi-navy); }
+  .user-id { font-size: 12px; color: var(--text-light); }
+
+  /* ── GREETING BANNER ── */
+  .greeting-banner {
+    background: linear-gradient(135deg, var(--sbi-navy) 0%, #244e7a 100%);
+    padding: 26px 36px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .greeting-banner h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .greeting-banner p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+  }
+  .last-login {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    text-align: right;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 960px;
+    margin: 28px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* ── PENSION DEPOSIT CARD (HERO) ── */
+  .pension-card {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,80,157,0.12);
+    border: 2px solid var(--sbi-green);
+  }
+  .pension-header {
+    background: var(--sbi-green);
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .pension-header .checkmark {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .pension-body {
+    padding: 28px 28px 24px;
+  }
+  .pension-amount-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .pension-amount-label {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .pension-amount {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--sbi-green);
+    letter-spacing: -1px;
+  }
+  .pension-amount .rupee { font-size: 30px; vertical-align: top; margin-top: 4px; display: inline-block; }
+  .pension-status-badge {
+    background: var(--sbi-green-bg);
+    border: 1.5px solid var(--sbi-green);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--sbi-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .status-text { font-size: 14px; font-weight: 600; color: var(--sbi-green); }
+
+  .pension-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .detail-box {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+  }
+  .detail-box .label {
+    font-size: 12px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .detail-box .value {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  /* ── ACCOUNT SUMMARY ROW ── */
+  .account-summary {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .card-title-bar {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-title-bar h2 {
+    font-size: 18px;
+    color: var(--sbi-navy);
+  }
+  .card-title-bar a {
+    font-size: 13px;
+    color: var(--sbi-blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .account-row {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef2f6;
+  }
+  .account-row:last-child { border-bottom: none; }
+  .account-left { display: flex; align-items: center; gap: 14px; }
+  .acct-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .acct-icon.savings { background: #e8f4fd; }
+  .acct-icon.current { background: #fef3e2; }
+  .acct-name { font-size: 15px; font-weight: 600; color: var(--text-dark); }
+  .acct-num { font-size: 13px; color: var(--text-light); margin-top: 2px; }
+  .acct-balance { font-size: 20px; font-weight: 700; color: var(--sbi-navy); }
+
+  /* ── RECENT TRANSACTIONS ── */
+  .txn-row {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef2f6;
+  }
+  .txn-row:last-child { border-bottom: none; }
+  .txn-left { display: flex; align-items: center; gap: 14px; }
+  .txn-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+  }
+  .txn-icon.credit { background: #eef7f2; }
+  .txn-icon.debit { background: #fef2f2; }
+  .txn-desc { font-size: 15px; font-weight: 600; color: var(--text-dark); }
+  .txn-date { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+  .txn-amount { font-size: 17px; font-weight: 700; }
+  .txn-amount.credit { color: var(--sbi-green); }
+  .txn-amount.debit { color: #c0392b; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--sbi-navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    font-size: 12px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+  /* ── REASSURANCE NOTE (subtle) ── */
+  .reassurance {
+    background: #fffbeb;
+    border: 1px solid #f5dfa0;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #7a6210;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .reassurance .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  @media (max-width: 600px) {
+    .pension-amount { font-size: 34px; }
+    .pension-amount-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .pension-details-grid { grid-template-columns: 1fr; }
+    .greeting-banner { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .last-login { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <span>🏦 State Bank of India – Internet Banking</span>
+  <span><a href="#">Help</a> &nbsp; <a href="#">Contact Us</a></span>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="logo-area">
+    <div class="logo-circle">SBI</div>
+    <div>
+      <div class="logo-text">State Bank <span>of India</span></div>
+      <div class="logo-sub">Internet Banking</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-user">
+      <div class="avatar">LRS</div>
+      <div>
+        <div class="user-name" id="father-name">Lakshminarayana Rao Saligame</div>
+        <div class="user-id">CIF: 12345678</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Greeting -->
+<div class="greeting-banner">
+  <div>
+    <h1 id="greeting">Good morning, Rajesh</h1>
+    <p>Welcome back. Your accounts are secure.</p>
+  </div>
+  <div class="last-login">
+    Last login: <span id="last-login-time"></span><br>
+    IP: 192.168.1.xx
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- ★ PENSION DEPOSIT CARD ★ -->
+  <div class="pension-card">
+    <div class="pension-header">
+      <div class="checkmark">✓</div>
+      Your Monthly Pension Has Been Deposited ✓
+    </div>
+    <div class="pension-body">
+      <div class="pension-amount-row">
+        <div>
+          <div class="pension-amount-label">Pension Amount Received</div>
+          <div class="pension-amount"><span class="rupee">₹</span>1,09,570.00</div>
+        </div>
+        <div class="pension-status-badge">
+          <div class="status-dot"></div>
+          <div class="status-text">Successfully Credited</div>
+        </div>
+      </div>
+      <div class="pension-details-grid">
+        <div class="detail-box">
+          <div class="label">Deposited On</div>
+          <div class="value" id="pension-date">1st January 2026</div>
+        </div>
+        <div class="detail-box">
+          <div class="label">Source</div>
+          <div class="value">Osmania Univ. Pension Fund</div>
+        </div>
+        <div class="detail-box">
+          <div class="label">Transaction Ref.</div>
+          <div class="value">TXN2026010100491</div>
+        </div>
+        <div class="detail-box">
+          <div class="label">Credited To</div>
+          <div class="value">Savings A/c ••4148</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reassurance note -->
+  <div class="reassurance">
+    <div class="icon">💛</div>
+    <div><strong>Note:</strong> Your pension is deposited on the 1st of every month. If today is the 1st or later, your pension for this month is safely in your account.</div>
+  </div>
+
+  <!-- Account Summary -->
+  <div class="account-summary">
+    <div class="card-title-bar">
+      <h2>My Accounts</h2>
+      <a href="#">View All →</a>
+    </div>
+    <div class="account-row">
+      <div class="account-left">
+        <div class="acct-icon savings">💰</div>
+        <div>
+          <div class="acct-name">Savings Account</div>
+          <div class="acct-num">A/c No: •••• •••• •••• 4148</div>
+        </div>
+      </div>
+      <div class="acct-balance">₹9,87,430.50</div>
+    </div>
+
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="account-summary">
+    <div class="card-title-bar">
+      <h2>Recent Transactions</h2>
+      <a href="#">View All →</a>
+    </div>
+    <div class="txn-row">
+      <div class="txn-left">
+        <div class="txn-icon credit">⬆️</div>
+        <div>
+          <div class="txn-desc">Osmania Univ. Pension Fund – Monthly Pension</div>
+          <div class="txn-date" id="txn-pension-date">01 Jan 2026 – 06:00 AM</div>
+        </div>
+      </div>
+      <div class="txn-amount credit">+ ₹1,09,570.00</div>
+    </div>
+    <div class="txn-row">
+      <div class="txn-left">
+        <div class="txn-icon debit">⬇️</div>
+        <div>
+          <div class="txn-desc">Electricity Bill – BESCOM</div>
+          <div class="txn-date" id="txn-bescom-date"></div>
+        </div>
+      </div>
+      <div class="txn-amount debit">− ₹1,240.00</div>
+    </div>
+    <div class="txn-row">
+      <div class="txn-left">
+        <div class="txn-icon debit">⬇️</div>
+        <div>
+          <div class="txn-desc">NEFT Transfer – ICICI A/c ••••327</div>
+          <div class="txn-date">25 Dec 2025 – 11:05 AM</div>
+        </div>
+      </div>
+      <div class="txn-amount debit">− ₹10,00,000.00</div>
+    </div>
+    <div class="txn-row">
+      <div class="txn-left">
+        <div class="txn-icon credit">⬆️</div>
+        <div>
+          <div class="txn-desc">Interest Credit – Savings Account</div>
+          <div class="txn-date" id="txn-interest-date"></div>
+        </div>
+      </div>
+      <div class="txn-amount credit">+ ₹430.50</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2026 State Bank of India. All Rights Reserved. &nbsp;|&nbsp;
+  <a href="#">Privacy Policy</a> &nbsp;|&nbsp;
+  <a href="#">Terms of Service</a> &nbsp;|&nbsp;
+  <a href="#">Customer Support: 1800-22-1111</a>
+</footer>
+
+<script>
+  // ── Dynamic greeting based on time of day ──
+  (function () {
+    const now = new Date();
+    const hours = now.getHours();
+    let greeting = "Good evening";
+    if (hours < 12) greeting = "Good morning";
+    else if (hours < 17) greeting = "Good afternoon";
+
+    const name = "Lakshmi";
+    document.getElementById('greeting').textContent = greeting + ", " + name;
+
+    // Last login (a few minutes ago for realism)
+    const minAgo = Math.floor(Math.random() * 5) + 1;
+    document.getElementById('last-login-time').textContent =
+      now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) +
+      " at " + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) ;
+
+    // Pension deposit date: 1st of current month
+    const first = new Date(now.getFullYear(), now.getMonth(), 1);
+    const opts = { day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById('pension-date').textContent =
+      "1st " + first.toLocaleString('en-IN', { month: 'long' }) + " " + first.getFullYear();
+
+    document.getElementById('txn-pension-date').textContent =
+      "01 " + first.toLocaleString('en-IN', { month: 'short' }) + " " + first.getFullYear() + " – 06:00 AM";
+
+    // Prior month's year and month
+    const prevMonthDate  = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    const prevMonthShort = prevMonthDate.toLocaleString('en-IN', { month: 'short' });
+    const prevMonthYear  = prevMonthDate.getFullYear();
+
+    // BESCOM bill: 7th of prior month
+    document.getElementById('txn-bescom-date').textContent =
+      "07 " + prevMonthShort + " " + prevMonthYear + " – 10:22 AM";
+
+    // Interest credit: 28th of prior month
+    document.getElementById('txn-interest-date').textContent =
+      "28 " + prevMonthShort + " " + prevMonthYear + " – 12:00 AM";
+  })();
+</script>
+
+</body>
+</html>
