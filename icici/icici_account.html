@@ -299,6 +299,145 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 10px 0;
+                display: none; /* Hide sidebar on mobile by default */
+            }
+
+            .menu-item {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+
+            .menu-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .account-section {
+                padding: 20px 15px;
+            }
+
+            .section-header {
+                flex-wrap: wrap;
+            }
+
+            .account-tabs {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .account-tab {
+                width: 100%;
+                text-align: center;
+                padding: 12px 15px;
+                font-size: 12px;
+            }
+
+            .balance-amount {
+                font-size: 28px;
+            }
+
+            .rupee-symbol {
+                font-size: 20px;
+            }
+
+            .total-balance {
+                font-size: 12px;
+            }
+
+            .timestamp {
+                font-size: 11px;
+                display: block;
+                margin-top: 5px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .action-btn {
+                padding: 15px 20px;
+                font-size: 13px;
+            }
+
+            .account-name-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .account-name {
+                font-size: 14px;
+            }
+
+            .account-number {
+                font-size: 12px;
+            }
+
+            .account-info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .info-label {
+                font-size: 12px;
+            }
+
+            .info-value {
+                font-size: 14px;
+            }
+
+            .view-details-link {
+                font-size: 12px;
+            }
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px 10px;
+            }
+
+            .account-section {
+                padding: 15px 10px;
+            }
+
+            .balance-amount {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 12px;
+            }
+
+            .account-count {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
