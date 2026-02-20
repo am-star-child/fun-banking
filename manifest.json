@@ -1,6 +1,6 @@
 o{
   "name": "Pension",
-  "short_name": "My Banking",
+  "short_name": "Pension",
   "description": "Personal banking reference for account information",
   "start_url": "./index_simple.html",
   "display": "standalone",
