@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Personal reference page for family use only">
+    <title>ICICI Bank - Internet Banking Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b35;
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .login-content {
+            padding: 35px 30px;
+        }
+
+        .login-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .lock-icon {
+            color: #ff6b35;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 45px 14px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .icon-btn:hover {
+            background-color: #ff5722;
+        }
+
+        .icon-btn-secondary {
+            background-color: transparent;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .icon-btn-secondary:hover {
+            background-color: transparent;
+            color: #666;
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: #e53935;
+            margin-top: 6px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #ff6b35;
+        }
+
+        .checkbox-label {
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .link {
+            color: #ff6b35;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .link:hover {
+            color: #ff5722;
+            text-decoration: underline;
+        }
+
+        .dropdown-wrapper {
+            position: relative;
+        }
+
+        .dropdown {
+            width: 100%;
+            padding: 14px 40px 14px 90px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            background-color: white;
+            cursor: pointer;
+            appearance: none;
+            transition: border-color 0.3s;
+        }
+
+        .dropdown:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        .dropdown-label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #666;
+            pointer-events: none;
+        }
+
+        .dropdown-arrow {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            pointer-events: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #d0d0d0;
+            color: #666;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .login-btn.active {
+            background-color: #ff6b35;
+            color: white;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .login-btn.active:hover {
+            background-color: #ff5722;
+        }
+
+        .trouble-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .trouble-link a {
+            color: #999;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .trouble-link a:hover {
+            color: #666;
+            text-decoration: underline;
+        }
+
+        .demo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px;
+            background-color: #fff9f5;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .demo-section:hover {
+            background-color: #ffedd9;
+        }
+
+        .play-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #ff6b35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .demo-text {
+            font-size: 13px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .demo-arrow {
+            color: #ff6b35;
+            font-size: 14px;
+        }
+
+        .eye-icon {
+            font-size: 18px;
+            color: #666;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<!--     <div style="background: #f0f4f8; border-bottom: 1px solid #d4dfe8; padding: 6px 20px; text-align: center; font-size: 11px; color: #718096;">
+        This page is for personal reference and account management. ICICI Bank respects your privacy.
+    </div> -->
+	
+<div style="background: #fff3cd; border: 2px solid #ffc107; padding: 12px 20px; text-align: center; font-size: 13px; color: #856404; font-weight: 600;">
+  ⚠️ PERSONAL REFERENCE PAGE - Not affiliated with any other bank
+</div>
+    <div class="login-container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">i</div>
+                <span>ICICI Bank</span>
+            </div>
+        </div>
+
+        <div class="login-content">
+            <div class="login-title">
+                <span class="lock-icon">🔒</span>
+                <span>Login to Internet Banking</span>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            class="form-input" 
+                            id="userId" 
+                            placeholder="User ID"
+                            value="slnrao213"
+                            autocomplete="off"
+                        >
+                        <div class="input-icon">
+                            <button type="button" class="icon-btn" title="Keyboard">
+                                <span>⌨️</span>
+                            </button>
+                            <button type="button" class="icon-btn-secondary" title="More options">
+                                <span>⋮</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="help-text">Please enter your User ID</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="rememberUser">
+                        <label for="rememberUser" class="checkbox-label">Remember User ID</label>
+                    </div>
+                    <a href="#" class="link">Get User ID</a>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            class="form-input" 
+                            id="password" 
+                            placeholder="Password"
+							value="Riya1203@"
+                            autocomplete="off"
+                        >
+                        <div class="input-icon">
+                            <span class="eye-icon" onclick="togglePassword()">👁️</span>
+                            <button type="button" class="icon-btn-secondary" title="More options">
+                                <span>⋮</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div></div>
+                    <a href="#" class="link">Get password</a>
+                </div>
+
+                <div class="form-group">
+                    <div class="dropdown-wrapper">
+                        <span class="dropdown-label">Start In:</span>
+                        <select class="dropdown">
+                            <option>Overview</option>
+                            <option>Accounts</option>
+                            <option>Payments & Transfer</option>
+                            <option>Deposits</option>
+                            <option>Cards</option>
+                        </select>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                </div>
+
+                <a href="#" class="login-btn" id="loginBtn">Login</a>
+
+                <div class="trouble-link">
+                    <a href="#">Trouble logging in?</a>
+                </div>
+
+                <div class="demo-section">
+                    <div class="play-icon">▶</div>
+                    <span class="demo-text">Must watch demo videos for banking</span>
+                    <span class="demo-arrow">›</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const userIdInput = document.getElementById('userId');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginForm = document.getElementById('loginForm');
+
+        function checkFormValidity() {
+            if (userIdInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+                loginBtn.classList.add('active');
+                loginBtn.href = 'icici_account.html'; // Link to account page
+            } else {
+                loginBtn.classList.remove('active');
+                loginBtn.href = '#';
+            }
+        }
+
+        userIdInput.addEventListener('input', checkFormValidity);
+        passwordInput.addEventListener('input', checkFormValidity);
+
+        function togglePassword() {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+        }
+
+        loginBtn.addEventListener('click', function(e) {
+            if (!loginBtn.classList.contains('active')) {
+                e.preventDefault();
+            }
+        });
+
+        // Check form validity on page load since User ID is prepopulated
+        checkFormValidity();
+    </script>
+</body>
+</html>
